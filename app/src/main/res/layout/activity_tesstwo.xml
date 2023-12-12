@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".TessTwoActivity">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="250dp"
+        android:id="@+id/imageContainer">
+
+        <!--    사진 보여주는 이미지뷰    -->
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/imageView"
+            />
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="42dp"
+        android:layout_below="@id/imageContainer"
+        android:clickable="true"
+        android:orientation="horizontal"
+        android:id="@+id/OCRButtonContainer">
+
+        <!--    사진 찍는 버튼    -->
+        <Button
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:text="이미지 선택"
+            android:textSize="15dp"
+            android:id="@+id/takePicture"/>
+
+        <!--    텍스트 추출 버튼    -->
+        <Button
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            android:text="텍스트 인식"
+            android:textSize= "15dp"
+            android:id="@+id/ocrButton"
+            android:layout_centerVertical="true"/>
+
+        <!--    텍스트 추출 버튼    -->
+        <Button
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="10dp"
+            android:text="ML-KIT"
+            android:textSize= "15dp"
+            android:id="@+id/mlkit_btn"
+            android:layout_centerVertical="true"/>
+
+    </LinearLayout>
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:layout_marginTop="14dp"
+        android:layout_marginBottom="14dp">
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="10dp">
+            <!--    텍스트 추출 뷰    -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="인식한 텍스트: "
+                android:textSize="20dp"
+                android:layout_centerVertical="true"
+                android:layout_centerHorizontal="true"/>
+            <!--    텍스트 추출 뷰    -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/OCRTextView"
+                android:textSize="14dp"
+                android:layout_centerVertical="true"
+                android:layout_centerHorizontal="true"/>
+        </LinearLayout>
+    </ScrollView>
+
+
+</LinearLayout>
