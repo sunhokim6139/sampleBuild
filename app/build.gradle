@@ -8,19 +8,50 @@ android {
     compileSdk 33
 
     defaultConfig {
-        applicationId "com.kolon.ocr"
         minSdk 26
         targetSdk 33
-        versionCode 1
-        versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    signingConfigs{
+        releaseWithSignedKey {
+            storeFile file(SIGNED_STORE_FILE)
+            storePassword SIGNED_STORE_PASSWORD
+            keyAlias SIGNED_KEY_ALIAS
+            keyPassword SIGNED_KEY_PASSWORD
+        }
+    }
+
+    flavorDimensions "mode"
+    productFlavors {
+        prd {
+            dimension "mode"
+            applicationId "com.kolon.ocr"
+            versionCode 1
+            versionName "01.00.00"
+        }
+
+        dev {
+            dimension "mode"
+            applicationId "com.kolon.ocrdev"
+            versionCode 1
+            versionName "00.00.01"
+        }
     }
 
     buildTypes {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+
+            signingConfig signingConfigs.releaseWithSignedKey
+
+            applicationVariants.all { variant ->
+                variant.outputs.all {
+                    outputFileName = "sample_${variant.productFlavors[0].name}.apk"
+                }
+            }
         }
     }
     compileOptions {
